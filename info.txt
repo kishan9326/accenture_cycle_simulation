@@ -1,0 +1,170 @@
+===== DB Details ===== 
+
+DB_DATABASE=cycle_simulator
+DB_USERNAME=root
+DB_PASSWORD=
+
+===== Admin Login =====
+username: test@example.com
+password: admin@!@#
+
+
+php artisan cache:clear;
+php artisan config:clear
+php artisan route:clear;
+php artisan view:clear;
+
+
+========Google Doc link==========
+https://docs.google.com/document/d/1eJE91Mv1JqGGmQvADvPYdQOLbk9VtleQO6KSZz80hVg/edit
+
+
+Migrations
+===== Run Seeder ===== 
+php artisan db:seed --class=DatabaseSeeder;
+php artisan db:seed --class=QuestionAnswerSeeder;
+php artisan db:seed --class=DummyDataSeeder;
+
+===== Create Seeder Example ===== 
+php artisan make:seeder TestSeeder;
+
+===== Symbolic Link creation =====
+php artisan storage:link
+
+===== Column Sorting with Pagination =====
+php artisan vendor:publish --provider="Kyslik\ColumnSortable\ColumnSortableServiceProvider" --tag="config"
+
+
+composer require h4cc/wkhtmltopdf-amd64 0.12.x
+composer require h4cc/wkhtmltoimage-amd64 0.12.x
+
+composer require barryvdh/laravel-snappy
+
+
+cp /usr/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+cp /usr/bin/wkhtmltoimage /usr/local/bin/wkhtmltoimage
+
+1. Topic/Category management -> Shown all 20 records into single page, Also shown Total active/inactive count on top right corner
+2. Leaderboard export option added for individual player
+
+
+$search = $request->query('search');
+        $query = Player::query();
+        $query = $query->orderBy('correct_answers', 'DESC')->orderBy('timer_in_sec', 'ASC')->orderBy('calories', 'ASC');
+        if (!empty($search)) {
+            $players = $query->sortable()->where('name', 'like', '%' . $search . '%')->paginate($this->limit);
+        } else {
+            $players = $query->sortable()->paginate($this->limit);
+        }
+        $data['players'] = $players;
+        $data['search'] = $search;
+        return view('player.index')->with($data);
+
+
+$search = $request->query('search');
+        $query = Player::query();
+        $query->sortable()->orderBy('correct_answers', 'DESC')->orderBy('timer_in_sec', 'ASC')->orderBy('calories', 'ASC');
+        if (!empty($search)) {
+            $query->where('name', 'like', '%' . $search . '%');
+        } else {
+            $query->paginate($this->limit);
+        }
+        $data['players'] = $query->paginate($this->limit);
+        $data['search'] = $search;
+        return view('player.index')->with($data);
+
+
+http://localhost/cycle-simulator/dashboard/profile-management?search=CCC&sort=environment&direction=asc
+
+
+1. Record was deleted from Profile, however the record had to be retained in the Leaderboard, however this is not happening.
+    => Explained. They want to retain all the entries on the leaderboard so, even if the admin deletes the user profile, the entry on the leaderboard should still stay. You have confirmed that this will be done.
+    => Done
+2. CMS - Image Upload – It is not allowing to upload the image only in the second and third image upload throwing an error if not of same resolution. This issue is not in the first image upload.
+    => Explained. Allow them to upload the image in any resolution that they want. While, the communication should clearly highlight that the ideal image resolution is what is required for the best experience and if not uploaded, it will show a distorted image. You have confirmed that this will be done.
+    => Done
+4. CMS – Leaderboard – Need dummy data for last month dates to validate monthly data is reflecting correctly on screen.
+    => 
+5. CMS – Mismatch in data in the Profile and Leaderboard – records in Profile are not present in the Leaderboard of completed players.
+    => Leaader data into API wrong
+    => 
+6. Individual Data export more than 10 questions list
+    => Duplicate entries forcefully inserted. Changes not required
+
+7. Make seeders for all tables dummy data for atleast last years
+8. Date range - end missing
+
+SELECT
+  id,
+  name,
+  correct_answers,
+  timer_in_sec,
+  timer,
+  calories,
+  rank() over (order by correct_answers) as ranking
+FROM
+  players
+  order by ranking DESC;
+
+
+  SELECT
+  id,
+  name,
+  correct_answers,
+  timer_in_sec,
+  timer,
+  calories,
+  rank() over (order by correct_answers DESC) as ranking
+FROM
+  players
+  order by ranking DESC;
+
+**************** Correct ****************
+SELECT
+  id,
+  name,
+  correct_answers,
+  timer_in_sec,
+  timer,
+  calories,
+  rank() over (order by correct_answers DESC) as ranking
+FROM
+  players;
+
+
+
+  SELECT
+  id,
+  name,
+  correct_answers,
+  timer_in_sec,
+  timer,
+  calories,
+  DENSE_RANK() over (PARTITION BY correct_answers, timer_in_sec, calories order by correct_answers DESC) as ranking
+FROM
+  players;
+
+
+
+  SELECT
+  id,
+  name,
+  correct_answers,
+  timer_in_sec,
+  timer,
+  calories,
+  DENSE_RANK() over (order by correct_answers DESC) as ranking
+FROM
+  players 
+  where player_status = 'active'
+  order by correct_answers DESC, timer_in_sec ASC, calories ASC;
+
+
+https://learnsql.com/blog/how-to-rank-rows-in-sql/#rank()-over(partition-by%E2%80%94multiple-columns
+
+
+18-24
+25-34
+35-44
+45-54
+55-70

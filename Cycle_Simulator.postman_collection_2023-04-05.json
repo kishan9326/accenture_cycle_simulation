@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "ebdd42b0-43e9-48aa-8fd4-af43fca07b60",
+		"name": "Cycle Simulator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17360091"
+	},
+	"item": [
+		{
+			"name": "Simulator",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{SERVICE}}api/simulator",
+					"host": [
+						"{{SERVICE}}api"
+					],
+					"path": [
+						"simulator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "players[0][cat_id]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "players[0][gaming_mode]",
+							"value": "Display Mode",
+							"type": "text"
+						},
+						{
+							"key": "players[0][environment]",
+							"value": "Garden By The Bay",
+							"type": "text"
+						},
+						{
+							"key": "players[0][player_count]",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "players[0][name]",
+							"value": "Mohan",
+							"type": "text"
+						},
+						{
+							"key": "players[0][email]",
+							"value": "mohan@webgrapple.com",
+							"type": "text"
+						},
+						{
+							"key": "players[0][organization]",
+							"value": "Web Grapple",
+							"type": "text"
+						},
+						{
+							"key": "players[0][age]",
+							"value": "26-32",
+							"type": "text"
+						},
+						{
+							"key": "players[0][gender]",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "players[0][userFile]",
+							"type": "file",
+							"src": "/Users/abdulbaquee/Downloads/1024x300.png"
+						},
+						{
+							"key": "players[1][cat_id]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "players[1][gaming_mode]",
+							"value": "Display Mode",
+							"type": "text"
+						},
+						{
+							"key": "players[1][environment]",
+							"value": "Garden By The Bay",
+							"type": "text"
+						},
+						{
+							"key": "players[1][player_count]",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "players[1][name]",
+							"value": "Karam",
+							"type": "text"
+						},
+						{
+							"key": "players[1][email]",
+							"value": "karam@webgrapple.com",
+							"type": "text"
+						},
+						{
+							"key": "players[1][organization]",
+							"value": "ImmersionX",
+							"type": "text"
+						},
+						{
+							"key": "players[1][age]",
+							"value": "35-40",
+							"type": "text"
+						},
+						{
+							"key": "players[1][gender]",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "players[1][userFile]",
+							"type": "file",
+							"src": "/Users/abdulbaquee/Downloads/1024x256.png"
+						},
+						{
+							"key": "players[2][cat_id]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "players[2][gaming_mode]",
+							"value": "Display Mode",
+							"type": "text"
+						},
+						{
+							"key": "players[2][environment]",
+							"value": "Garden By The Bay",
+							"type": "text"
+						},
+						{
+							"key": "players[2][player_count]",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "players[2][name]",
+							"value": "Madric",
+							"type": "text"
+						},
+						{
+							"key": "players[2][email]",
+							"value": "madric@webgrapple.com",
+							"type": "text"
+						},
+						{
+							"key": "players[2][organization]",
+							"value": "Example company",
+							"type": "text"
+						},
+						{
+							"key": "players[2][age]",
+							"value": "18-25",
+							"type": "text"
+						},
+						{
+							"key": "players[2][gender]",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "players[2][userFile]",
+							"type": "file",
+							"src": "/Users/abdulbaquee/Downloads/225x156.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{SERVICE}}api/player",
+					"host": [
+						"{{SERVICE}}api"
+					],
+					"path": [
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leaderboard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"player_id\": 4,\n    \"calories\": 100,\n    \"timer\": \"01:08:10\",\n    \"questions\":[\n        {\n            \"question_id\": 1,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 2,\n            \"is_correct\": \"no\"\n        },\n        {\n            \"question_id\": 3,\n            \"is_correct\": \"none\"\n        },\n        {\n            \"question_id\": 4,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 5,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 6,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 7,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 8,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 9,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 10,\n            \"is_correct\": \"yes\"\n        }\n    ]\n  },\n  {\n    \"player_id\": 5,\n    \"calories\": 250,\n    \"timer\": \"00:05:05\",\n    \"questions\":[\n        {\n            \"question_id\": 11,\n            \"is_correct\": \"no\"\n        },\n        {\n            \"question_id\": 12,\n            \"is_correct\": \"no\"\n        },\n        {\n            \"question_id\": 13,\n            \"is_correct\": \"no\"\n        },\n        {\n            \"question_id\": 14,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 15,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 16,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 17,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 18,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 19,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 20,\n            \"is_correct\": \"yes\"\n        }\n    ]\n  },\n  {\n    \"player_id\": 6,\n    \"calories\": 100,\n    \"timer\": \"00:02:30\",\n    \"questions\":[\n        {\n            \"question_id\": 21,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 22,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 23,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 24,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 25,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 26,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 27,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 28,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 29,\n            \"is_correct\": \"yes\"\n        },\n        {\n            \"question_id\": 30,\n            \"is_correct\": \"yes\"\n        }\n    ]\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVICE}}api/player/leaderboard",
+					"host": [
+						"{{SERVICE}}api"
+					],
+					"path": [
+						"player",
+						"leaderboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Leaderboard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVICE}}api/player/leaderboard",
+					"host": [
+						"{{SERVICE}}api"
+					],
+					"path": [
+						"player",
+						"leaderboard"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
